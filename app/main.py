@@ -40,18 +40,18 @@ app.add_middleware(
 app.include_router(router)
 
 # Resolve base directory (For Azure)
-APP_ROOT = os.getenv("APP_ROOT", os.getcwd())
+# APP_ROOT = os.getenv("APP_ROOT", os.getcwd())
 
 # Serve frontend index.html
-# BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 FRONTEND_PATH = os.path.join(APP_ROOT, "..", "index.html")  #changed base_dir to APP_ROOT
 
-# @app.get("/")
-# def serve_frontend():
-#     return FileResponse(FRONTEND_PATH)
 @app.get("/")
-def root():
-    return {
-        "status": "ok",
-        "message": "AI Chatbot Running"
-    }
+def serve_frontend():
+    return FileResponse(FRONTEND_PATH)
+# @app.get("/")
+# def root():
+#     return {
+#         "status": "ok",
+#         "message": "AI Chatbot Running"
+#     }
