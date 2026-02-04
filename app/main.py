@@ -46,6 +46,12 @@ APP_ROOT = os.getenv("APP_ROOT", os.getcwd())
 # BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 FRONTEND_PATH = os.path.join(APP_ROOT, "..", "index.html")  #changed base_dir to APP_ROOT
 
+# @app.get("/")
+# def serve_frontend():
+#     return FileResponse(FRONTEND_PATH)
 @app.get("/")
-def serve_frontend():
-    return FileResponse(FRONTEND_PATH)
+def root():
+    return {
+        "status": "ok",
+        "message": "AI Chatbot Running"
+    }
