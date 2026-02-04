@@ -1,7 +1,10 @@
 venv/
 __pycache__/
 
-*.gguf
-.env
-.venv
 vectorestore/
+data/*.gguf
+venv/*
+.env
+__pycache__/
+data/*.gguf
+vector_store/

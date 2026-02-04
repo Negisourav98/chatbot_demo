@@ -38,7 +38,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="D:\Bott\ai-backend-chatbot\ai-backend\venv"
+VIRTUAL_ENV="C:\Users\negis\Desktop\Chat_bot\chatbot_demo\venv"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"

@@ -39,9 +39,12 @@ app.add_middleware(
 # Register API router
 app.include_router(router)
 
+# Resolve base directory (For Azure)
+APP_ROOT = os.getenv("APP_ROOT", os.getcwd())
+
 # Serve frontend index.html
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-FRONTEND_PATH = os.path.join(BASE_DIR, "..", "index.html")
+# BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+FRONTEND_PATH = os.path.join(APP_ROOT, "..", "index.html")  #changed base_dir to APP_ROOT
 
 @app.get("/")
 def serve_frontend():
