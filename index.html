@@ -87,12 +87,13 @@
       inputBox.value = "";
 
       try {
-      const response = await fetch("/chat", {
-      method: "POST",
-      headers: {
+
+        const response = await fetch("https://chatbotinstance-eterbhdcgkaagjdb.centralindia-01.azurewebsites.net/chat", {
+        method: "POST",
+        headers: {
         "Content-Type": "application/json"
-      },
-      body: JSON.stringify({ question })
+        },
+        body: JSON.stringify({ question })
       });
 
       if (!response.ok) {
@@ -153,12 +154,12 @@
     //       const text = decoder.decode(value);
     //       botMessage.innerHTML += text;
 
-    //       // Auto scroll as we type
-    //       chatBox.scrollTop = chatBox.scrollHeight;
-    //     }
+        //   // Auto scroll as we type
+        //   chatBox.scrollTop = chatBox.scrollHeight;
+        // }
 
-    //     // Auto scroll
-    //     chatBox.scrollTop = chatBox.scrollHeight;
+        // // Auto scroll
+        // chatBox.scrollTop = chatBox.scrollHeight;
 
     //   } catch (error) {
     //     console.error("Fetch Error:", error);
