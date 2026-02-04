@@ -44,7 +44,7 @@ app.include_router(router)
 
 # Serve frontend index.html
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-FRONTEND_PATH = os.path.join(APP_ROOT, "..", "index.html")  #changed base_dir to APP_ROOT
+FRONTEND_PATH = os.path.join(BASE_DIR, "..", "index.html") 
 
 @app.get("/")
 def serve_frontend():
