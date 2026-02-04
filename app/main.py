@@ -22,6 +22,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse
+from fastapi.staticfiles import StaticFiles
 from app.api.chat import router
 import os
 
@@ -43,12 +44,14 @@ app.include_router(router)
 # APP_ROOT = os.getenv("APP_ROOT", os.getcwd())
 
 # Serve frontend index.html
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-FRONTEND_PATH = os.path.join(BASE_DIR, "..", "index.html") 
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))   # app/
+PROJECT_ROOT = os.path.abspath(os.path.join(BASE_DIR, ".."))   # repo root
+INDEX_FILE = os.path.join(PROJECT_ROOT, "index.html")
+# FRONTEND_PATH = os.path.join(BASE_DIR, "..", "index.html")
 
 @app.get("/")
 def serve_frontend():
-    return FileResponse(FRONTEND_PATH)
+    return FileResponse(INDEX_FILE)
 # @app.get("/")
 # def root():
 #     return {
