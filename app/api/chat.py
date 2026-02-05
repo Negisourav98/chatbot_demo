@@ -49,7 +49,7 @@
 
 
 from fastapi import APIRouter
-from fastapi.responses import StreamingResponse
+from fastapi.responses import JSONResponse
 from pydantic import BaseModel
 from app.services.llm_service import generate_response
 from app.services.retrieval_service import search_context
@@ -66,9 +66,7 @@ async def chat_bot(request: ChatRequest):
     # Check for greetings
     greetings = ["hi", "hello", "hey", "greetings", "hi there", "hello there"]
     if request.question.strip().lower() in greetings:
-        async def greeting_generator():
-            yield "Hello! Welcome to StarZopp. How can I assist you today?"
-        return StreamingResponse(greeting_generator(), media_type="text/plain")
+        return JSONResponse(content={"answer": "Hello! Welcome to StarZopp. How can I assist you today?"})
 
     context = search_context(request.question)
     print(f"DEBUG: Retrieved Context for '{request.question}':\n{context}\n---\n")
@@ -86,4 +84,8 @@ Answer the question simply and concisely using the Context.
 Response:"""
 
     # Return streaming response
-    return StreamingResponse(generate_response(prompt), media_type="text/plain")
+    # return StreamingResponse(generate_response(prompt), media_type="text/plain")
+    answer = generate_response(prompt)
+    return JSONResponse({
+        "answer": answer
+    })
